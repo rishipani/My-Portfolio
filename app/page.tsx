@@ -85,91 +85,106 @@ const bounceIn = {
 function SwipeableProjectCard({ project, index }: any) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
+  const [flipped, setFlipped] = useState(false)
 
   const handleSwipe = (event: any, info: PanInfo) => {
     if (info.offset.x > 100) {
-      // Swipe right - like
       setIsLiked(true)
       setTimeout(() => setIsLiked(false), 1000)
     } else if (info.offset.x < -100) {
-      // Swipe left - next image (if multiple)
-      setCurrentImageIndex((prev) => (prev + 1) % 3) // Assuming 3 images max
+      setCurrentImageIndex((prev) => (prev + 1) % 3)
     }
   }
 
+  const handleFlip = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setFlipped((f) => !f)
+  }
+
   return (
-    <motion.div
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      onDragEnd={handleSwipe}
-      whileDrag={{ scale: 1.05, rotate: 5 }}
-      whileHover={{ scale: 1.02 }}
-      className="relative group cursor-grab active:cursor-grabbing"
-    >
-      <Card className="bg-gradient-to-br from-purple-900/80 to-slate-900/90 border-purple-800/60 backdrop-blur-xl hover:from-purple-900/90 hover:to-slate-900/95 transition-all duration-300 overflow-hidden">
-        <div className="relative overflow-hidden">
-          <Image
-            src={project.image || "/web profile.jpg"}
-            alt={project.title}
-            width={300}
-            height={200}
-            className="w-full h-48 object-cover"
-          />
-
-          {/* Swipe indicators */}
-          <div className="absolute top-4 left-4 right-4 flex justify-between">
-            <Badge className="bg-black/50 text-white border-0 backdrop-blur-sm">{project.status}</Badge>
-            <div className="flex space-x-1">
-              <div className="w-2 h-2 rounded-full bg-white/50" />
-              <div className="w-2 h-2 rounded-full bg-white/30" />
-              <div className="w-2 h-2 rounded-full bg-white/30" />
-            </div>
-          </div>
-
-          {/* Like animation */}
-          <AnimatePresence>
-            {isLiked && (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <div className="bg-red-500 rounded-full p-4">
-                  <Heart className="h-8 w-8 text-white fill-white" />
+    <div className="relative group cursor-pointer" style={{ perspective: 1200 }} onClick={handleFlip}>
+      <motion.div
+        className="w-full h-full"
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.6 }}
+        style={{ transformStyle: "preserve-3d", minHeight: 320 }}
+      >
+        {/* Front Side */}
+        <div className="absolute inset-0 w-full h-full" style={{ backfaceVisibility: "hidden" }}>
+          <Card className="bg-gradient-to-br from-purple-900/80 to-slate-900/90 border-purple-800/60 backdrop-blur-xl hover:from-purple-900/90 hover:to-slate-900/95 transition-all duration-300 overflow-hidden">
+            <div className="relative overflow-hidden">
+              <Image
+                src={project.image || "/web profile.jpg"}
+                alt={project.title}
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover"
+              />
+              {/* Swipe indicators */}
+              <div className="absolute top-4 left-4 right-4 flex justify-between">
+                <Badge className="bg-black/50 text-white border-0 backdrop-blur-sm">{project.status}</Badge>
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 rounded-full bg-white/50" />
+                  <div className="w-2 h-2 rounded-full bg-white/30" />
+                  <div className="w-2 h-2 rounded-full bg-white/30" />
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Swipe hint */}
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="flex justify-between text-white/60 text-xs">
-              <span>← Swipe for more</span>
-              <span>Swipe to like →</span>
+              </div>
+              {/* Like animation */}
+              <AnimatePresence>
+                {isLiked && (
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <div className="bg-red-500 rounded-full p-4">
+                      <Heart className="h-8 w-8 text-white fill-white" />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+            <CardContent className="p-4">
+              <h3 className="text-lg font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                {project.title}
+              </h3>
+              <div className="flex flex-wrap gap-1 mb-3">
+                {project.tech.slice(0, 3).map((tech: string, techIndex: number) => (
+                  <Badge key={techIndex} className="bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">
+                    {tech}
+                  </Badge>
+                ))}
+                {project.tech.length > 3 && (
+                  <Badge className="bg-white/10 text-white/60 border-white/20 text-xs">+{project.tech.length - 3}</Badge>
+                )}
+              </div>
+              <span className="text-xs text-white/40">Tap to flip for details</span>
+            </CardContent>
+          </Card>
+        </div>
+        {/* Back Side */}
+        <div
+          className="absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900/90 to-purple-900/90 border border-purple-800/60 backdrop-blur-xl p-6 text-center"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <div>
+            <h3 className="text-lg font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              {project.title}
+            </h3>
+            <p className="text-white/80 text-sm mb-3">{project.description}</p>
+            <div className="flex flex-wrap gap-1 justify-center mb-3">
+              {project.tech.map((tech: string, techIndex: number) => (
+                <Badge key={techIndex} className="bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+            <span className="text-xs text-white/40">Tap to flip back</span>
           </div>
         </div>
-
-        <CardContent className="p-4">
-          <h3 className="text-lg font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            {project.title}
-          </h3>
-          <p className="text-white/70 text-sm mb-3 line-clamp-2">{project.description}</p>
-
-          <div className="flex flex-wrap gap-1 mb-3">
-            {project.tech.slice(0, 3).map((tech: string, techIndex: number) => (
-              <Badge key={techIndex} className="bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">
-                {tech}
-              </Badge>
-            ))}
-            {project.tech.length > 3 && (
-              <Badge className="bg-white/10 text-white/60 border-white/20 text-xs">+{project.tech.length - 3}</Badge>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }
 
