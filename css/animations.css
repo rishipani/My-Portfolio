@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════
+   animations.css  —  Amlan Pulak Pani Portfolio
+   All keyframes, entrance animations, glitch, etc.
+═══════════════════════════════════════════════ */
+
+/* ── KEYFRAMES ── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(110%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes scan {
+  0%   { top: 0%;   opacity: 0; }
+  8%   { opacity: 0.7; }
+  92%  { opacity: 0.7; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes marqueeAnim {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes extendLine {
+  0%, 100% { width: 20px; opacity: 0.4; }
+  50%       { width: 42px; opacity: 1; }
+}
+
+@keyframes barGrow {
+  from { width: 0; }
+}
+
+@keyframes glitch1 {
+  0%, 90%, 100% { opacity: 0; transform: skewX(0deg); }
+  91%            { opacity: 0.6; transform: skewX(-4deg); }
+  93%            { opacity: 0; }
+  95%            { opacity: 0.4; transform: skewX(2deg); }
+  97%            { opacity: 0; }
+}
+
+@keyframes glitch2 {
+  0%, 88%, 100% { opacity: 0; transform: skewX(0deg); }
+  89%            { opacity: 0.5; transform: skewX(3deg); }
+  92%            { opacity: 0; }
+  94%            { opacity: 0.4; transform: skewX(-2deg); }
+  96%            { opacity: 0; }
+}
+
+@keyframes orb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-20px, 24px) scale(1.04); }
+}
+
+@keyframes orb2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(16px, -18px); }
+}
+
+/* ── ENTRANCE UTILITIES ── */
+
+/* Used with --d CSS var for delay */
+.anim-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both;
+}
+
+.anim-slide-up {
+  display: block;
+  overflow: hidden;
+}
+.anim-slide-up > span,
+.anim-slide-up .hero-name {
+  display: block;
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal[data-d="1"] { transition-delay: 0.12s; }
+.reveal[data-d="2"] { transition-delay: 0.24s; }
+.reveal[data-d="3"] { transition-delay: 0.36s; }
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── GLITCH ── */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  pointer-events: none;
+}
+.glitch::before {
+  color: var(--orange);
+  clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
+  animation: glitch1 5s infinite;
+  left: 2px;
+}
+.glitch::after {
+  color: var(--blue);
+  clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+  animation: glitch2 5s infinite;
+  left: -2px;
+}
+
+/* ── CURSOR BLINK ── */
+.cursor-blink {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+/* ── STATUS BAR DOT ── */
+.sb-dot {
+  animation: blink 2.2s ease-in-out infinite;
+}
+
+/* ── HERO HS-LINE ── */
+.hs-line {
+  animation: extendLine 2.2s ease-in-out infinite;
+}
+
+/* ── SCAN LINE ── */
+.pf-scan {
+  animation: scan 4.5s linear infinite;
+}
+
+/* ── SHIMMER on ACCENT NAME ── */
+.hero-name--accent {
+  background: linear-gradient(90deg, var(--text) 30%, var(--green) 58%, var(--text) 88%);
+  background-size: 220%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, .74s) both,
+             shimmer 4s linear 2.2s infinite;
+}
+
+/* ── MARQUEE ── */
+.marquee-track {
+  animation: marqueeAnim 24s linear infinite;
+}
+
+/* ── HERO ORBS ── */
+.hero-orb-1 { animation: orb1 9s ease-in-out infinite; }
+.hero-orb-2 { animation: orb2 12s ease-in-out infinite; }
+
+/* ── SKILL BARS ── */
+.sbi-fill,
+.hc-fill {
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}

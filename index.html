@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amlan Pulak Pani — Full Stack Developer. Java, Spring Boot, Angular, Node.js." />
+  <title>Amlan Pulak Pani:Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fragment+Mono:ital@0;1&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <!-- ═══════════════════════ CANVAS BG ═══════════════════════ -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+
+  <!-- ═══════════════════════ STATUS BAR ═══════════════════════ -->
+  <div id="statusbar" role="banner">
+    <div class="sb-left">
+      <span class="sb-dot" aria-hidden="true"></span>
+      <span class="d-none d-md-inline"><span class="sb-label">sys // </span><span class="sb-val">AMLAN.PULAK.PANI</span></span>
+      <span class="d-none d-lg-inline"><span class="sb-label">stack // </span><span class="sb-val">JAVA · SPRING · ANGULAR · NODE</span></span>
+      <span><span class="sb-label">status // </span><span class="sb-val">OPEN TO WORK</span></span>
+    </div>
+    <div class="sb-right">
+      <span class="d-none d-sm-inline"><span class="sb-label">CGPA&nbsp;</span><span class="sb-green">8.9</span></span>
+      <span id="sb-time">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+  <nav class="navbar navbar-expand-lg fixed-top os-navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand os-logo" href="#hero">APP<span class="logo-accent">://</span>AMLAN</a>
+
+      <button class="navbar-toggler os-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-lg-1 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link os-nav-link" href="#skills">01&nbsp;Skills</a></li>
+          <li class="nav-item"><a class="nav-link os-nav-link" href="#projects">02&nbsp;Projects</a></li>
+          <li class="nav-item"><a class="nav-link os-nav-link" href="#experience">03&nbsp;Experience</a></li>
+          <li class="nav-item"><a class="nav-link os-nav-link" href="#education">04&nbsp;Education</a></li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn os-btn-primary" href="#contact">Contact&nbsp;↗</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section id="hero" class="os-section hero-section">
+    <div class="container-fluid px-4">
+      <div class="row align-items-center min-vh-100 pt-5">
+
+        <!-- Left: text content -->
+        <div class="col-12 col-lg-8 hero-content">
+          <div class="hero-eyebrow anim-fade-up" style="--d:.3s">
+            Full Stack Developer — Java · Spring Boot · Angular
+          </div>
+
+          <div class="hero-name-block">
+            <div class="hero-name-wrap anim-slide-up" style="--d:.5s">
+              <span class="hero-name glitch" data-text="AMLAN">AMLAN</span>
+            </div>
+            <div class="hero-name-wrap anim-slide-up" style="--d:.62s">
+              <span class="hero-name glitch" data-text="PULAK">PULAK</span>
+            </div>
+            <div class="hero-name-wrap anim-slide-up" style="--d:.74s">
+              <span class="hero-name hero-name--accent glitch" data-text="PANI">PANI</span>
+            </div>
+          </div>
+
+          <p class="hero-role anim-fade-up" style="--d:.9s">
+            Building systems that <em>scale</em> — from REST APIs to reactive front-ends.
+          </p>
+
+          <div class="hero-meta row g-3 anim-fade-up" style="--d:1.05s">
+            <div class="col-6 col-sm-3">
+              <div class="hmi-val">8.9<span>/10</span></div>
+              <div class="hmi-key">CGPA · B.Tech CSE</div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="hmi-val">3<span>+</span></div>
+              <div class="hmi-key">Full-Stack Projects</div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="hmi-val">2<span>×</span></div>
+              <div class="hmi-key">Internships</div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="hmi-val">6<span>+</span></div>
+              <div class="hmi-key">Languages</div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 mt-4 anim-fade-up" style="--d:1.2s">
+            <a href="#projects" class="os-btn-primary">View Projects ↓</a>
+            <a href="mailto:paniamlan5@gmail.com" class="os-btn-ghost">Send a Signal →</a>
+          </div>
+        </div>
+
+        <!-- Right: Profile card -->
+        <div class="col-12 col-lg-4 d-flex justify-content-center justify-content-lg-end mt-5 mt-lg-0 anim-fade-up" style="--d:1.35s">
+          <div class="hero-card">
+            <div class="hc-titlebar">
+              <span class="hc-dot" style="background:#ff5f57"></span>
+              <span class="hc-dot" style="background:#febc2e"></span>
+              <span class="hc-dot" style="background:#28c840"></span>
+              <span class="hc-title">developer.profile</span>
+            </div>
+            <div class="hc-body">
+              <div class="hc-row"><span class="hc-key">Name</span><span class="hc-val">Amlan Pulak Pani</span></div>
+              <div class="hc-row"><span class="hc-key">Degree</span><span class="hc-val">B.Tech CSE</span></div>
+              <div class="hc-row"><span class="hc-key">University</span><span class="hc-val">Centurion Univ.</span></div>
+              <div class="hc-row"><span class="hc-key">Location</span><span class="hc-val">Odisha, India</span></div>
+              <div class="hc-row"><span class="hc-key">Status</span><span class="hc-val hc-green">// AVAILABLE</span></div>
+              <div class="hc-bars mt-3">
+                <div class="hc-bar-label"><span class="hc-key">Backend</span><span class="hc-green" style="font-size:.6rem">92%</span></div>
+                <div class="hc-track"><div class="hc-fill" data-w="92" style="--bar-color: var(--green)"></div></div>
+                <div class="hc-bar-label mt-2"><span class="hc-key">Frontend</span><span style="color:var(--blue);font-size:.6rem">78%</span></div>
+                <div class="hc-track"><div class="hc-fill" data-w="78" style="--bar-color: var(--blue)"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.row -->
+
+      <div class="hero-scroll-hint d-none d-md-flex anim-fade-up" style="--d:1.6s">
+        <div class="hs-line"></div>
+        Scroll to explore
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ MARQUEE ═══════════════════════ -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track">
+      <!-- items injected by JS for clean duplication -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ SKILLS ═══════════════════════ -->
+  <section id="skills" class="os-section">
+    <div class="container-fluid px-4">
+
+      <div class="sec-label reveal">01 // technical stack</div>
+
+      <div class="row g-5 align-items-start">
+        <!-- Left column -->
+        <div class="col-12 col-lg-5">
+          <h2 class="sec-title reveal">Tech<br><em>Arsenal</em></h2>
+          <p class="sec-intro reveal" data-d="1">
+            Versatile across the full stack — from normalized database schemas to
+            Spring Boot microservices and Angular reactive UIs. Every tool chosen with intent.
+          </p>
+
+          <!-- Skill bars -->
+          <div class="skill-bars reveal" data-d="2" id="skill-bars">
+            <div class="sbi">
+              <div class="sbi-top"><span class="sbi-name">Java / Spring Boot</span><span class="sbi-pct green">92%</span></div>
+              <div class="sbi-track"><div class="sbi-fill" data-w="92" style="--bar-color:var(--green)"></div></div>
+            </div>
+            <div class="sbi">
+              <div class="sbi-top"><span class="sbi-name">Angular / TypeScript</span><span class="sbi-pct" style="color:var(--blue)">82%</span></div>
+              <div class="sbi-track"><div class="sbi-fill" data-w="82" style="--bar-color:var(--blue)"></div></div>
+            </div>
+            <div class="sbi">
+              <div class="sbi-top"><span class="sbi-name">Python</span><span class="sbi-pct" style="color:var(--yellow)">80%</span></div>
+              <div class="sbi-track"><div class="sbi-fill" data-w="80" style="--bar-color:var(--yellow)"></div></div>
+            </div>
+            <div class="sbi">
+              <div class="sbi-top"><span class="sbi-name">MySQL / JDBC</span><span class="sbi-pct" style="color:var(--orange)">85%</span></div>
+              <div class="sbi-track"><div class="sbi-fill" data-w="85" style="--bar-color:var(--orange)"></div></div>
+            </div>
+            <div class="sbi">
+              <div class="sbi-top"><span class="sbi-name">Node.js / Express</span><span class="sbi-pct" style="color:var(--purple)">75%</span></div>
+              <div class="sbi-track"><div class="sbi-fill" data-w="75" style="--bar-color:var(--purple)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: Terminal window -->
+        <div class="col-12 col-lg-7 reveal" data-d="2">
+          <div class="terminal-window">
+            <div class="term-titlebar">
+              <span class="term-btn" style="background:#ff5f57"></span>
+              <span class="term-btn" style="background:#febc2e"></span>
+              <span class="term-btn" style="background:#28c840"></span>
+              <span class="term-title">amlan@dev:~$ skills.sh</span>
+            </div>
+            <div class="term-body">
+              <div class="term-line"><span class="p">$</span> <span class="cmd">cat languages.txt</span></div>
+              <div class="tag-row">
+                <span class="stag green">Java</span><span class="stag green">Python</span>
+                <span class="stag green">JavaScript</span><span class="stag green">C</span>
+                <span class="stag green">Kotlin</span><span class="stag green">HTML/CSS</span>
+              </div>
+              <div class="term-line mt-2"><span class="p">$</span> <span class="cmd">cat frameworks.txt</span></div>
+              <div class="tag-row">
+                <span class="stag blue">Spring Boot</span><span class="stag blue">Angular</span>
+                <span class="stag blue">Bootstrap</span><span class="stag blue">jQuery</span>
+                <span class="stag blue">Express.js</span>
+              </div>
+              <div class="term-line mt-2"><span class="p">$</span> <span class="cmd">cat databases.txt</span></div>
+              <div class="tag-row">
+                <span class="stag orange">MySQL</span><span class="stag orange">Firebase</span>
+                <span class="stag orange">JDBC</span>
+              </div>
+              <div class="term-line mt-2"><span class="p">$</span> <span class="cmd">cat architecture.txt</span></div>
+              <div class="tag-row">
+                <span class="stag purple">Spring Security</span><span class="stag purple">RBAC</span>
+                <span class="stag purple">MVC</span><span class="stag purple">REST APIs</span>
+              </div>
+              <div class="term-line mt-2"><span class="p">$</span> <span class="cmd">cat tools.txt</span></div>
+              <div class="tag-row">
+                <span class="stag yellow">Git</span><span class="stag yellow">GitHub</span>
+                <span class="stag yellow">VS Code</span><span class="stag yellow">Android Studio</span>
+                <span class="stag yellow">Node.js</span>
+              </div>
+              <div class="term-line mt-2"><span class="p">$</span> <span class="cmd">cat coursework.txt</span></div>
+              <div class="tag-row">
+                <span class="stag">DSA</span><span class="stag">OOP</span>
+                <span class="stag">DBMS</span><span class="stag">OS</span>
+                <span class="stag">Software Eng.</span>
+              </div>
+              <div class="term-line mt-3" style="color:var(--green)"><span class="p">$</span> <span class="cursor-blink">▌</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PROJECTS ═══════════════════════ -->
+  <section id="projects" class="os-section">
+    <div class="container-fluid px-4">
+
+      <div class="sec-label reveal">02 // projects</div>
+      <h2 class="sec-title reveal">Selected<br><em>Work</em></h2>
+
+      <!-- Featured project -->
+      <div class="proj-featured reveal">
+        <div class="row g-0">
+          <div class="col-12 col-lg-6 pf-visual-col">
+            <div class="pf-visual">
+              <div class="pf-visual-inner">
+                <div class="pf-scan"></div>
+                <div class="pf-vi-bar">
+                  <span class="pf-vi-dot" style="background:#ff5f57"></span>
+                  <span class="pf-vi-dot" style="background:#febc2e"></span>
+                  <span class="pf-vi-dot" style="background:#28c840"></span>
+                </div>
+                <div class="pf-vi-body">
+                  <div class="pf-vi-line"><span class="p">@</span><span class="c">RestController</span></div>
+                  <div class="pf-vi-line"><span class="v">public class</span> <span class="c">LibraryController</span> {</div>
+                  <div class="pf-vi-line ps-3"><span class="p">@</span><span class="c">Autowired</span></div>
+                  <div class="pf-vi-line ps-3"><span class="v">private</span> <span class="s">BookService</span> bookService;</div>
+                  <div class="pf-vi-line mt-1 ps-3"><span class="p">@</span><span class="c">GetMapping</span>(<span class="s">"/books"</span>)</div>
+                  <div class="pf-vi-line ps-3"><span class="v">public</span> <span class="s">ResponseEntity</span>&lt;<span class="c">List</span>&gt; getAllBooks() {</div>
+                  <div class="pf-vi-line ps-5"><span class="v">return</span> bookService.findAll();</div>
+                  <div class="pf-vi-line ps-3">}</div>
+                  <div class="pf-vi-line">}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 pf-info-col">
+            <div class="pf-info">
+              <div class="pf-num">Project 01 / 03</div>
+              <div class="pf-type">★ Featured · Full Stack · Role-Based</div>
+              <h3 class="pf-name">Library Management System</h3>
+              <p class="pf-desc">
+                Full-stack role-based web app with real-time notifications across three tiers — Student, Admin, Librarian.
+                Spring Boot REST backend, Spring Security auth, Angular SPA, MySQL persistence.
+              </p>
+              <div class="tag-row mb-4">
+                <span class="stag green">Spring Boot</span>
+                <span class="stag blue">Angular</span>
+                <span class="stag orange">MySQL</span>
+                <span class="stag purple">Spring Security</span>
+                <span class="stag yellow">RBAC</span>
+                <span class="stag">REST API</span>
+              </div>
+              <a href="https://github.com/rishipani/lms" target="_blank" rel="noopener" class="pf-link">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <span class="proj-featured-badge">FEATURED</span>
+      </div>
+
+      <!-- Other projects grid -->
+      <div class="row g-0 proj-grid-border mt-0">
+        <div class="col-12 col-md-6">
+          <a href="https://github.com/rishipani/tales-trails" target="_blank" rel="noopener" class="proj-card">
+            <div class="pc-num">02 / 03 — Full Stack · Node.js</div>
+            <h3 class="pc-name">Tales &amp; Trails</h3>
+            <p class="pc-desc">Full-stack bookstore with Express.js REST API and MySQL. 3-step email OTP via Nodemailer, session-based auth with bcryptjs, persistent cart &amp; wishlist, multi-payment orders, role-protected Admin Panel.</p>
+            <div class="tag-row">
+              <span class="stag green">Node.js</span><span class="stag blue">Express</span>
+              <span class="stag orange">MySQL</span><span class="stag">Nodemailer</span>
+            </div>
+            <span class="pc-arrow">↗</span>
+          </a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a href="https://github.com/rishipani/Student-Hostel-Management-System" target="_blank" rel="noopener" class="proj-card">
+            <div class="pc-num">03 / 03 — Backend · Java</div>
+            <h3 class="pc-name">Hostel Management System</h3>
+            <p class="pc-desc">Role-based hostel administration on MVC architecture. JDBC + MySQL for student, room, and fee management workflows with clean separation of concerns.</p>
+            <div class="tag-row">
+              <span class="stag green">Java</span><span class="stag orange">JDBC</span>
+              <span class="stag orange">MySQL</span><span class="stag blue">MVC</span>
+            </div>
+            <span class="pc-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXPERIENCE ═══════════════════════ -->
+  <section id="experience" class="os-section">
+    <div class="container-fluid px-4">
+
+      <div class="sec-label reveal">03 // experience</div>
+      <h2 class="sec-title reveal">Work<br><em>History</em></h2>
+
+      <div class="exp-panel-wrap reveal">
+        <div class="row g-0">
+
+          <!-- Tabs sidebar -->
+          <div class="col-12 col-md-4 col-lg-3 exp-sidebar">
+            <div class="exp-sidebar-title">// positions</div>
+            <button class="exp-tab active" data-target="exp-0" onclick="switchExp(0,this)">
+              <div class="exp-tab-role">Python Dev Intern</div>
+              <div class="exp-tab-co">Oasis Infobyte</div>
+              <div class="exp-tab-date">JUN 2025 · REMOTE</div>
+            </button>
+            <button class="exp-tab" data-target="exp-1" onclick="switchExp(1,this)">
+              <div class="exp-tab-role">Python Dev Intern</div>
+              <div class="exp-tab-co">Tech Octanet Pvt. Ltd</div>
+              <div class="exp-tab-date">NOV 2024 · REMOTE</div>
+            </button>
+          </div>
+
+          <!-- Content panels -->
+          <div class="col-12 col-md-8 col-lg-9 exp-content">
+            <div class="exp-pane active" id="exp-0">
+              <div class="ep-role">Python Development Intern</div>
+              <div class="ep-co">// Oasis Infobyte</div>
+              <div class="ep-meta">Jun 2025 · Remote · Python · Project-Based Environment</div>
+              <ul class="ep-pts">
+                <li>Built Python mini-projects — calculator, to-do app, data visualizer — with modular architecture, clean I/O, and formatted output.</li>
+                <li>Enhanced debugging confidence through real-time problem solving in a project-based dev environment.</li>
+                <li>Applied best practices in code organization and maintainability across all deliverables.</li>
+              </ul>
+            </div>
+            <div class="exp-pane" id="exp-1">
+              <div class="ep-role">Python Development Intern</div>
+              <div class="ep-co">// Tech Octanet Pvt. Ltd</div>
+              <div class="ep-meta">Nov 2024 · Remote · Python · Automation &amp; Scripting</div>
+              <ul class="ep-pts">
+                <li>Developed automation scripts and mini-projects, deepening expertise in data structures, file handling, and error management.</li>
+                <li>Followed team Git workflows, completing deliverables on schedule in a structured, collaborative environment.</li>
+                <li>Strengthened debugging and logic skills through peer code reviews and real-world challenges.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EDUCATION ═══════════════════════ -->
+  <section id="education" class="os-section">
+    <div class="container-fluid px-4">
+
+      <div class="sec-label reveal">04 // education</div>
+      <h2 class="sec-title reveal">Academic<br><em>Credentials</em></h2>
+
+      <div class="row g-0 edu-grid">
+        <div class="col-12 col-md-4 edu-card reveal">
+          <div class="edu-idx"><span>01 / 03</span><span>2023 → 2027</span></div>
+          <div class="edu-score">8.9</div>
+          <div class="edu-score-lbl">CGPA</div>
+          <h3 class="edu-deg">B.Tech — Computer Science &amp; Engineering</h3>
+          <p class="edu-inst">Centurion University of Technology and Management, Jatni, Odisha</p>
+          <p class="edu-year">Expected Graduation — 2027</p>
+        </div>
+        <div class="col-12 col-md-4 edu-card reveal" data-d="1">
+          <div class="edu-idx"><span>02 / 03</span><span>2021 – 2023</span></div>
+          <div class="edu-score" style="font-size:clamp(2rem,8vw,3.5rem)">66%</div>
+          <div class="edu-score-lbl">Percentage</div>
+          <h3 class="edu-deg">Higher Secondary — 12th Standard</h3>
+          <p class="edu-inst">D.A.V Model Senior Secondary School, Jeypore, Odisha</p>
+          <p class="edu-year">Science Stream · 2023</p>
+        </div>
+        <div class="col-12 col-md-4 edu-card reveal" data-d="2">
+          <div class="edu-idx"><span>03 / 03</span><span>2009 – 2021</span></div>
+          <div class="edu-score" style="font-size:clamp(2rem,8vw,3.5rem)">62%</div>
+          <div class="edu-score-lbl">Percentage</div>
+          <h3 class="edu-deg">Matriculation — 10th Standard</h3>
+          <p class="edu-inst">Saints School, Koraput, Odisha</p>
+          <p class="edu-year">Foundational · 12 Years</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact" class="os-section pb-5">
+    <div class="container-fluid px-4">
+
+      <div class="sec-label reveal">05 // contact</div>
+
+      <div class="row g-5 align-items-start">
+        <div class="col-12 col-lg-5 reveal">
+          <h2 class="contact-big">Let's<br>build it<br><em>together.</em></h2>
+          <p class="contact-body">
+            Open to internships, collaborations, and full-time roles.
+            Whether you have an idea, an opening, or just want to talk tech — the terminal is always listening.
+          </p>
+          <a href="mailto:paniamlan5@gmail.com" class="os-btn-primary d-inline-flex">Send a Signal ↗</a>
+        </div>
+
+        <div class="col-12 col-lg-7 reveal" data-d="1">
+          <div class="contact-links">
+            <a href="mailto:paniamlan5@gmail.com" class="cl-item">
+              <div class="cl-left">
+                <div class="cl-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
+                <div>
+                  <div class="cl-platform">Email</div>
+                  <div class="cl-handle">paniamlan5@gmail.com</div>
+                </div>
+              </div>
+              <span class="cl-arrow">↗</span>
+            </a>
+            <a href="https://github.com/rishipani" target="_blank" rel="noopener" class="cl-item">
+              <div class="cl-left">
+                <div class="cl-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+                <div>
+                  <div class="cl-platform">GitHub</div>
+                  <div class="cl-handle">github.com/rishipani</div>
+                </div>
+              </div>
+              <span class="cl-arrow">↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/iamamlanpani" target="_blank" rel="noopener" class="cl-item">
+              <div class="cl-left">
+                <div class="cl-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+                <div>
+                  <div class="cl-platform">LinkedIn</div>
+                  <div class="cl-handle">linkedin.com/in/iamamlanpani</div>
+                </div>
+              </div>
+              <span class="cl-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="os-footer">
+    <div class="container-fluid px-4">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 text-center text-md-start">
+          © 2025 Amlan Pulak Pani — Built with passion, not templates.
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-end mt-2 mt-md-0">
+          B.Tech CSE · Centurion University · Odisha
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/canvas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
