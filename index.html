@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Amlan Pulak Pani — Full Stack Developer. Java, Spring Boot, Angular, Node.js." />
+  <meta name="description" content="Amlan Pulak Pani - Full Stack Developer. Java, Spring Boot, Angular, Node.js." />
   <title>Amlan Pulak Pani:Portfolio</title>
 
   <!-- Bootstrap 5 -->
@@ -22,7 +22,6 @@
 
   <!-- ═══════════════════════ CANVAS BG ═══════════════════════ -->
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
-
 
   <!-- ═══════════════════════ STATUS BAR ═══════════════════════ -->
   <div id="statusbar" role="banner">
@@ -82,12 +81,13 @@
               <span class="hero-name glitch" data-text="PULAK">PULAK</span>
             </div>
             <div class="hero-name-wrap anim-slide-up" style="--d:.74s">
-              <span class="hero-name hero-name--accent glitch" data-text="PANI">PANI</span>
+              <span class="hero-name--accent-wrap">
+      <span class="hero-name glitch" data-text="PANI">PANI</span></span>
             </div>
           </div>
 
           <p class="hero-role anim-fade-up" style="--d:.9s">
-            Building systems that <em>scale</em> — from REST APIs to reactive front-ends.
+            Building systems that <em>scale</em> - from REST APIs to reactive front-ends.
           </p>
 
           <div class="hero-meta row g-3 anim-fade-up" style="--d:1.05s">
@@ -167,7 +167,7 @@
         <div class="col-12 col-lg-5">
           <h2 class="sec-title reveal">Tech<br><em>Arsenal</em></h2>
           <p class="sec-intro reveal" data-d="1">
-            Versatile across the full stack — from normalized database schemas to
+            Versatile across the full stack - from normalized database schemas to
             Spring Boot microservices and Angular reactive UIs. Every tool chosen with intent.
           </p>
 
@@ -255,80 +255,49 @@
       <div class="sec-label reveal">02 // projects</div>
       <h2 class="sec-title reveal">Selected<br><em>Work</em></h2>
 
-      <!-- Featured project -->
-      <div class="proj-featured reveal">
-        <div class="row g-0">
-          <div class="col-12 col-lg-6 pf-visual-col">
-            <div class="pf-visual">
-              <div class="pf-visual-inner">
-                <div class="pf-scan"></div>
-                <div class="pf-vi-bar">
-                  <span class="pf-vi-dot" style="background:#ff5f57"></span>
-                  <span class="pf-vi-dot" style="background:#febc2e"></span>
-                  <span class="pf-vi-dot" style="background:#28c840"></span>
-                </div>
-                <div class="pf-vi-body">
-                  <div class="pf-vi-line"><span class="p">@</span><span class="c">RestController</span></div>
-                  <div class="pf-vi-line"><span class="v">public class</span> <span class="c">LibraryController</span> {</div>
-                  <div class="pf-vi-line ps-3"><span class="p">@</span><span class="c">Autowired</span></div>
-                  <div class="pf-vi-line ps-3"><span class="v">private</span> <span class="s">BookService</span> bookService;</div>
-                  <div class="pf-vi-line mt-1 ps-3"><span class="p">@</span><span class="c">GetMapping</span>(<span class="s">"/books"</span>)</div>
-                  <div class="pf-vi-line ps-3"><span class="v">public</span> <span class="s">ResponseEntity</span>&lt;<span class="c">List</span>&gt; getAllBooks() {</div>
-                  <div class="pf-vi-line ps-5"><span class="v">return</span> bookService.findAll();</div>
-                  <div class="pf-vi-line ps-3">}</div>
-                  <div class="pf-vi-line">}</div>
-                </div>
-              </div>
+      <div class="row g-0 proj-grid-border reveal">
+        <div class="col-12 col-md-4">
+          <div class="proj-card">
+            <div class="pc-num">01 / 03 - Full Stack · Java</div>
+            <h3 class="pc-name">Library Management System</h3>
+            <p class="pc-desc">Full-stack role-based web app with real-time notifications across three tiers - Student, Admin, Librarian. Spring Boot REST backend, Spring Security auth, Angular SPA, MySQL persistence.</p>
+            <div class="tag-row">
+              <span class="stag green">Spring Boot</span>
+              <span class="stag blue">Angular</span>
+              <span class="stag orange">MySQL</span>
+              <span class="stag purple">Spring Security</span>
+              <span class="stag yellow">RBAC</span>
             </div>
-          </div>
-          <div class="col-12 col-lg-6 pf-info-col">
-            <div class="pf-info">
-              <div class="pf-num">Project 01 / 03</div>
-              <div class="pf-type">Full Stack · Role-Based</div>
-              <h3 class="pf-name">Library Management System</h3>
-              <p class="pf-desc">
-                Full-stack role-based web app with real-time notifications across three tiers — Student, Admin, Librarian.
-                Spring Boot REST backend, Spring Security auth, Angular SPA, MySQL persistence.
-              </p>
-              <div class="tag-row mb-4">
-                <span class="stag green">Spring Boot</span>
-                <span class="stag blue">Angular</span>
-                <span class="stag orange">MySQL</span>
-                <span class="stag purple">Spring Security</span>
-                <span class="stag yellow">RBAC</span>
-                <span class="stag">REST API</span>
-              </div>
-              <a href="https://github.com/rishipani/lms" target="_blank" rel="noopener" class="pf-link">View on GitHub ↗</a>
-            </div>
+            <a href="https://github.com/rishipani/lms" target="_blank" rel="noopener" class="pc-gh-link">View on GitHub ↗</a>
           </div>
         </div>
-      </div>
-
-      <!-- Other projects grid -->
-      <div class="row g-0 proj-grid-border mt-0">
-        <div class="col-12 col-md-6">
-          <a href="https://github.com/rishipani/tales-trails" target="_blank" rel="noopener" class="proj-card">
-            <div class="pc-num">02 / 03 — Full Stack · Node.js</div>
+        <div class="col-12 col-md-4">
+          <div class="proj-card">
+            <div class="pc-num">02 / 03 - Full Stack · Node.js</div>
             <h3 class="pc-name">Tales &amp; Trails</h3>
             <p class="pc-desc">Full-stack bookstore with Express.js REST API and MySQL. 3-step email OTP via Nodemailer, session-based auth with bcryptjs, persistent cart &amp; wishlist, multi-payment orders, role-protected Admin Panel.</p>
             <div class="tag-row">
-              <span class="stag green">Node.js</span><span class="stag blue">Express</span>
-              <span class="stag orange">MySQL</span><span class="stag">Nodemailer</span>
+              <span class="stag green">Node.js</span>
+              <span class="stag blue">Express</span>
+              <span class="stag orange">MySQL</span>
+              <span class="stag">Nodemailer</span>
             </div>
-            <span class="pc-arrow">↗</span>
-          </a>
+            <a href="https://github.com/rishipani/tales-trails" target="_blank" rel="noopener" class="pc-gh-link">View on GitHub ↗</a>
+          </div>
         </div>
-        <div class="col-12 col-md-6">
-          <a href="https://github.com/rishipani/Student-Hostel-Management-System" target="_blank" rel="noopener" class="proj-card">
-            <div class="pc-num">03 / 03 — Backend · Java</div>
+        <div class="col-12 col-md-4">
+          <div class="proj-card">
+            <div class="pc-num">03 / 03 - Backend · Java</div>
             <h3 class="pc-name">Hostel Management System</h3>
             <p class="pc-desc">Role-based hostel administration on MVC architecture. JDBC + MySQL for student, room, and fee management workflows with clean separation of concerns.</p>
             <div class="tag-row">
-              <span class="stag green">Java</span><span class="stag orange">JDBC</span>
-              <span class="stag orange">MySQL</span><span class="stag blue">MVC</span>
+              <span class="stag green">Java</span>
+              <span class="stag orange">JDBC</span>
+              <span class="stag orange">MySQL</span>
+              <span class="stag blue">MVC</span>
             </div>
-            <span class="pc-arrow">↗</span>
-          </a>
+            <a href="https://github.com/rishipani/Student-Hostel-Management-System" target="_blank" rel="noopener" class="pc-gh-link">View on GitHub ↗</a>
+          </div>
         </div>
       </div>
 
@@ -367,7 +336,7 @@
               <div class="ep-co">// Oasis Infobyte</div>
               <div class="ep-meta">Jun 2025 · Remote · Python · Project-Based Environment</div>
               <ul class="ep-pts">
-                <li>Built Python mini-projects — calculator, to-do app, data visualizer — with modular architecture, clean I/O, and formatted output.</li>
+                <li>Built Python mini-projects - calculator, to-do app, data visualizer - with modular architecture, clean I/O, and formatted output.</li>
                 <li>Enhanced debugging confidence through real-time problem solving in a project-based dev environment.</li>
                 <li>Applied best practices in code organization and maintainability across all deliverables.</li>
               </ul>
@@ -401,15 +370,15 @@
           <div class="edu-idx"><span>01 / 03</span><span>2023 → 2027</span></div>
           <div class="edu-score">8.9</div>
           <div class="edu-score-lbl">CGPA</div>
-          <h3 class="edu-deg">B.Tech — Computer Science &amp; Engineering</h3>
+          <h3 class="edu-deg">B.Tech  -Computer Science &amp; Engineering</h3>
           <p class="edu-inst">Centurion University of Technology and Management, Jatni, Odisha</p>
-          <p class="edu-year">Expected Graduation — 2027</p>
+          <p class="edu-year">Expected Graduation - 2027</p>
         </div>
         <div class="col-12 col-md-4 edu-card reveal" data-d="1">
           <div class="edu-idx"><span>02 / 03</span><span>2021 – 2023</span></div>
           <div class="edu-score" style="font-size:clamp(2rem,8vw,3.5rem)">66%</div>
           <div class="edu-score-lbl">Percentage</div>
-          <h3 class="edu-deg">Higher Secondary — 12th Standard</h3>
+          <h3 class="edu-deg">Higher Secondary - 12th Standard</h3>
           <p class="edu-inst">D.A.V Model Senior Secondary School, Jeypore, Odisha</p>
           <p class="edu-year">Science Stream · 2023</p>
         </div>
@@ -417,7 +386,7 @@
           <div class="edu-idx"><span>03 / 03</span><span>2009 – 2021</span></div>
           <div class="edu-score" style="font-size:clamp(2rem,8vw,3.5rem)">62%</div>
           <div class="edu-score-lbl">Percentage</div>
-          <h3 class="edu-deg">Matriculation — 10th Standard</h3>
+          <h3 class="edu-deg">Matriculation - 10th Standard</h3>
           <p class="edu-inst">Saints School, Koraput, Odisha</p>
           <p class="edu-year">Foundational · 12 Years</p>
         </div>
@@ -437,7 +406,7 @@
           <h2 class="contact-big">Let's<br>build it<br><em>together.</em></h2>
           <p class="contact-body">
             Open to internships, collaborations, and full-time roles.
-            Whether you have an idea, an opening, or just want to talk tech — the terminal is always listening.
+            Whether you have an idea, an opening, or just want to talk tech - the terminal is always listening.
           </p>
           <a href="mailto:paniamlan5@gmail.com" class="os-btn-primary d-inline-flex">Send a Signal ↗</a>
         </div>
@@ -491,12 +460,7 @@
   <footer class="os-footer">
     <div class="container-fluid px-4">
       <div class="row align-items-center">
-        <div class="col-12 col-md-6 text-center text-md-start">
-          © 2025 Amlan Pulak Pani — Built with passion, not templates.
-        </div>
-        <div class="col-12 col-md-6 text-center text-md-end mt-2 mt-md-0">
-          B.Tech CSE · Centurion University · Odisha
-        </div>
+        <div class="col-12 text-center"> © 2026 Amlan Pulak Pani</div>
       </div>
     </div>
   </footer>

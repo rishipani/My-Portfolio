@@ -21,6 +21,7 @@
   --blue:             #3d9bff;
   --purple:           #b07fff;
   --yellow:           #ffe066;
+  --ff-mono:          'Fragment Mono', 'Courier New', monospace;
   --font-display:     'Bebas Neue', sans-serif;
   --font-serif:       'Instrument Serif', Georgia, serif;
   --font-mono:        'Fragment Mono', 'Courier New', monospace;
@@ -75,7 +76,6 @@ body::after {
   z-index: 0;
   pointer-events: none;
 }
-
 
 /* hide cursor on touch devices */
 @media (hover: none) {
@@ -394,7 +394,6 @@ body::after {
 
 /* ── SKILL BARS ── */
 .skill-bars { display: flex; flex-direction: column; gap: 1.1rem; }
-.sbi {}
 .sbi-top { display: flex; justify-content: space-between; margin-bottom: 0.45rem; }
 .sbi-name { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
 .sbi-pct  { font-size: 0.62rem; }
@@ -447,107 +446,40 @@ body::after {
 .stag.yellow { border-color: rgba(255,224,102,0.3); color: var(--yellow); }
 
 /* ── PROJECTS ── */
-.proj-featured {
-  position: relative;
-  border: 1px solid var(--panel-border);
-  background: var(--panel);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: border-color 0.28s;
-  overflow: hidden;
-  margin-bottom: 0;
-}
-.proj-featured:hover { border-color: var(--panel-hover); }
 
-.proj-featured-badge {
-  position: absolute; top: 1.1rem; right: 1.3rem;
-  font-size: 0.52rem; letter-spacing: 0.28em;
-  color: var(--green);
-  border: 1px solid rgba(57,255,138,0.24);
-  padding: 0.18rem 0.6rem;
-  pointer-events: none;
-}
-
-/* Code preview panel */
-.pf-visual-col { border-right: 1px solid var(--panel-border); }
-@media (max-width: 991.98px) {
-  .pf-visual-col {
-    border-right: none;
-    border-bottom: 1px solid var(--panel-border);
-  }
-}
-
-.pf-visual {
-  background: rgba(0,0,0,0.38);
-  display: flex; align-items: center; justify-content: center;
-  min-height: 220px; padding: 2rem;
-}
-.pf-visual-inner {
-  width: 100%; max-width: 420px; aspect-ratio: 16/10;
-  border: 1px solid rgba(57,255,138,0.1);
-  background: rgba(5,5,7,0.85);
-  font-family: var(--font-mono); font-size: clamp(0.5rem, 1.2vw, 0.62rem);
-  color: var(--dim); overflow: hidden; position: relative;
-}
-.pf-vi-bar {
-  background: rgba(255,255,255,0.025);
-  border-bottom: 1px solid rgba(57,255,138,0.08);
-  padding: 0.38rem 0.6rem;
-  display: flex; gap: 0.3rem; align-items: center;
-}
-.pf-vi-dot { width: 5px; height: 5px; border-radius: 50%; }
-.pf-vi-body { padding: 0.6rem; }
-.pf-vi-line { margin-bottom: 0.25rem; }
-.pf-vi-line .p { color: var(--green); }
-.pf-vi-line .c { color: var(--dim); }
-.pf-vi-line .v { color: var(--blue); }
-.pf-vi-line .s { color: var(--orange); }
-.pf-scan {
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, var(--green), transparent);
-  opacity: 0.65;
-}
-
-.pf-info { padding: clamp(1.5rem, 4vw, 3rem); }
-.pf-num  { font-size: 0.57rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 0.7rem; }
-.pf-type { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 0.9rem; }
-.pf-name {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.5vw, 2.3rem);
-  line-height: 1.05; margin-bottom: 1rem; letter-spacing: 0.02em; color: var(--text);
-}
-.pf-desc { font-size: 0.8rem; line-height: 1.8; color: var(--dim); margin-bottom: 1.5rem; }
-.pf-link {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--green); text-decoration: none;
-  border-bottom: 1px solid rgba(57,255,138,0.28); padding-bottom: 2px;
-  width: fit-content;
-  transition: gap 0.2s, border-color 0.2s;
-}
-.pf-link:hover { gap: 0.8rem; border-color: var(--green); }
-
-/* Small project cards grid */
+/* Equal-height card grid */
 .proj-grid-border {
   border: 1px solid var(--panel-border);
   border-top: none;
-  background: var(--panel-border); /* gap color */
+  background: var(--panel-border); /* gap color between cards */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
+
+/* Each Bootstrap col becomes a flex column */
+.proj-grid-border > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card fills full column height */
 .proj-card {
-  display: block; position: relative; overflow: hidden;
-  background: var(--panel); backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: clamp(1.5rem, 4vw, 2.5rem);
-  text-decoration: none; color: inherit; 
-  border: none; /* grid gap handles it */
-  /* right border on first col */
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.28s;
+  border: none;
 }
-.col-md-6:first-child .proj-card {
-  border-right: 1px solid var(--panel-border);
-}
-@media (max-width: 767.98px) {
-  .col-md-6:first-child .proj-card { border-right: none; border-bottom: 1px solid var(--panel-border); }
-}
+
 .proj-card::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
   background: var(--green); transform: scaleX(0); transform-origin: left;
@@ -555,18 +487,35 @@ body::after {
 }
 .proj-card:hover { background: rgba(57,255,138,0.028); }
 .proj-card:hover::after { transform: scaleX(1); }
+
 .pc-num  { font-size: 0.56rem; letter-spacing: 0.24em; color: var(--muted); margin-bottom: 0.9rem; }
 .pc-name {
   font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 1.7rem);
   letter-spacing: 0.02em; margin-bottom: 0.7rem; color: var(--text);
 }
 .pc-desc { font-size: 0.76rem; line-height: 1.75; color: var(--dim); margin-bottom: 1.2rem; }
-.pc-arrow {
-  position: absolute; bottom: 1.5rem; right: 1.5rem;
-  font-size: 1.1rem; color: var(--muted);
-  transition: transform 0.22s, color 0.22s;
+
+/* Tags pushed to bottom, GitHub link right below */
+.proj-card .tag-row {
+  margin-left: 0;
+  margin-top: auto;
 }
-.proj-card:hover .pc-arrow { transform: translate(4px,-4px); color: var(--green); }
+
+.pc-gh-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(57,255,138,0.35);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: color 0.2s, border-color 0.2s;
+}
+.pc-gh-link:hover { color: #fff; border-color: #fff; }
 
 /* ── EXPERIENCE ── */
 .exp-panel-wrap {
@@ -592,14 +541,13 @@ body::after {
   padding-bottom: 0.8rem; border-bottom: 1px solid var(--panel-border);
 }
 
-/* Mobile: tabs horizontal */
 .exp-tab {
   display: block; width: 100%;
   text-align: left; background: transparent;
   padding: 0.9rem 1rem; margin-bottom: 0.4rem;
   font-family: var(--font-mono); font-size: 0.68rem;
   border: 1px solid transparent; color: var(--text);
-  cursor: none; position: relative;
+  cursor: pointer; position: relative;
   transition: border-color 0.22s, background 0.22s;
 }
 .exp-tab::before {
@@ -691,7 +639,7 @@ body::after {
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.2rem 1.4rem;
   border: 1px solid var(--panel-border); margin-bottom: -1px;
-  text-decoration: none; color: inherit; cursor: none;
+  text-decoration: none; color: inherit;
   background: var(--panel); backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: border-color 0.22s, background 0.22s;
@@ -728,9 +676,18 @@ body::after {
 /* ── SELECTION ── */
 ::selection { background: var(--green); color: var(--bg); }
 
-/* ── MOBILE NAV PADDING (all sections) ── */
+/* ── RESPONSIVE ── */
 @media (max-width: 991.98px) {
   .os-section { padding-top: 5rem; padding-bottom: 4rem; }
+}
+@media (max-width: 767.98px) {
+  /* Stack cards vertically on mobile, each full width */
+  .proj-grid-border > [class*="col-"] {
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .proj-grid-border > [class*="col-"]:last-child {
+    border-bottom: none;
+  }
 }
 @media (max-width: 575.98px) {
   .os-section { padding-top: 4rem; padding-bottom: 3rem; }
